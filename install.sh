@@ -2,6 +2,10 @@
 
 MONGODBDIR=/data/mongodb3/
 
+#sudo echo $MONGODBDIR > /tmp/mongodinit
+#MONGODINIT= sudo cat /tmp/mongodinit | cut -d / -f3
+
+
 if [ $# -eq 5 ]; then
   echo "You have entered the required arguments"
   echo "Validating if the directories already exit"
@@ -56,6 +60,11 @@ echo "port=40000">>$MONGODBDIR/$CONF/mongod.conf
 
 #Run mongod process
   sudo /$MONGODBDIR/$BIN/mongod --config /$MONGODBDIR/$CONF/mongod.conf
+
+
+#sudo curl -o /$MONGODBDIR/$CONF/$MONGODINIT https://raw.githubusercontent.com/esayasc/mongodb-install-script/master/mongod.init
+#sudo chmod +x  /$MONGODBDIR/$CONF/$MONGODINIT
+
 
 fi
 
