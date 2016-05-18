@@ -15,7 +15,9 @@
 
 # NOTE: if you change any OPTIONS here, you get what you pay for:
 # this script assumes all options are in the config file.
-CONFIGFILE="/etc/mongod.conf"
+
+##CONFIGFILE="/etc/mongod.conf"
+
 OPTIONS=" -f $CONFIGFILE"
 SYSCONFIG="/etc/sysconfig/mongod"
 
@@ -26,10 +28,10 @@ DBPATH=`awk -F'[:=]' -v IGNORECASE=1 '/^[[:blank:]]*dbpath[[:blank:]]*[:=][[:bla
 PIDFILE=`awk -F'[:=]' -v IGNORECASE=1 '/^[[:blank:]]*pidfilepath[[:blank:]]*[:=][[:blank:]]*/{print $2}' "$CONFIGFILE" | tr -d '[:blank:]'`
 PIDDIR=`dirname $PIDFILE`
 
-mongod=${MONGOD-/usr/bin/mongod}
+##mongod=${MONGOD-/usr/bin/mongod}
 
-MONGO_USER=mongod
-MONGO_GROUP=mongod
+##MONGO_USER=mongod
+##MONGO_GROUP=mongod
 
 if [ -f "$SYSCONFIG" ]; then
     . "$SYSCONFIG"
